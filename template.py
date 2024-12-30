@@ -14,6 +14,7 @@ list_of_files = [
     "setup.py",
     "app.py",
     "research/trials.ipynb"
+    
 ]
 
 for filepath in list_of_files:

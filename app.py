@@ -89,7 +89,20 @@ rag_chain = create_retrieval_chain(retriever, question_answer_chain)
 
 @app.route("/")
 def index():
-    return render_template('chat.html')
+    return render_template('index.html')
+@app.route("/chatbot")
+def chatbot_ui():
+    return render_template('chat.html') 
+@app.route("/appointments")
+def appointments():
+    return render_template("dashboard__appointments.html")
+
+@app.route("/doctors")
+def view_doctors():
+    return render_template("dashboard__doctors.html")
+
+
+
 
 @app.route("/get", methods=["GET", "POST"])
 def chat():

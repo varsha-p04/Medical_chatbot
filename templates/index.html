@@ -1,0 +1,232 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from smarttemplates.net/medikit/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 00:51:52 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1" />
+<meta name="author" content="SmartTemplates" />
+<meta name="description" content="medikit admin dashboard" />
+<meta name="keywords" content="medical dashboard, HTML UI KIT, medikit" />
+<title>Dr.Virtual</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/swiper.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.scrollbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/daterangepicker.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/select2.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ion.rangeSlider.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.min.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">  
+<style>
+	.styled-button {
+    background-color: #3c4663;  /* Base color */
+    border: none;               /* Remove border */
+    color: white;               /* White text */
+    padding: 14px 28px;         /* Adjusted padding */
+    text-align: center;         /* Center the text */
+    text-decoration: none;      /* Remove underline */
+    display: inline-block;      /* Align button inline */
+    font-size: 16px;            /* Font size */
+    font-family: 'Arial', sans-serif; /* Modern font */
+    border-radius: 8px;         /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    cursor: pointer;           /* Change cursor to pointer */
+}
+
+.styled-button a {
+    color: white;               /* White color for text */
+    text-decoration: none;      /* Remove underline */
+}
+
+.styled-button:hover {
+    background-color: #4563a0;  /* Darker shade on hover */
+    transform: translateY(-2px); /* Subtle lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.styled-button:active {
+    transform: translateY(1px);  /* Button presses down a little on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow on click */
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="dashboard-wrap">
+
+	<header class="sidebar-header">
+		<h1 class="sidebar-header__logo">Dr<span>.<strong>Virtual</strong></span></h1>
+	</header>
+	
+	<!-- Left Sidebar -->
+	<div class="section section--sidebar" id="sidebar">
+	
+		<nav class="sidebar-menu"> 
+			<ul>
+				<li class="dashboard"><a href="{{ url_for('index') }}"><b>Dashboard</b></a></li>
+				<li class="appointment"><a href="{{ url_for('appointments') }}"><b>Appointments</b></a></li>
+				<li class="doctors has-submenu">
+					<li class="doctors has-submenu"><a href="{{ url_for('view_doctors') }}"><b>Doctors<span class="submenu-arrow"></span></b></a>
+						<ul class="sidebar-menu__submenu">
+							<li><a href="{{ url_for('view_doctors') }}">View all doctors</a></li>
+						</ul>
+				</li>
+				
+			</ul>
+		</nav>
+		
+	
+	</div>
+	
+	<!-- Content -->
+	<div class="section section--content" id="content">
+		<header class="content-header">
+		
+			<div class="sidebar-resize"></div>
+			<div class="mobile-menu"><div class="st-burger-icon st-burger-icon--medium"><span></span></div></div>
+			
+			<div class="content-header__user content-header__dropdown">  
+			    <div class="content-header__user-avatar content-header__dropdown-activate" data-dropdown="userdropdown">
+					<div class="content-header__user-thumb"><img src="images/avatar-2.jpg" alt="" title=""/></div>
+					<span class="content-header__user-name">Nathalie Roberts</span>
+			    </div>  
+				<nav class="dropdown-menu dropdown-menu--header dropdown-menu--user-menu " id="userdropdown"> 	
+				<h3 class="dropdown-menu__subtitle">User menu</h3>
+				<ul>   
+				    <li><a href="#">My profile</a></li>
+				    <li><a href="#">Activity</a></li>
+				    <li><a href="#">Switch account</a></li>
+				    <li><a href="#">Support</a></li>
+				    <li class="logout"><a href="#" class="button button--general button--red-border">Logout</a></li>
+				</ul>
+				</nav>
+			</div>
+			
+			<div class="content-header__notifications content-header__dropdown">  
+			    <div class="content-header__notifications-icon content-header__icon content-header__dropdown-activate" data-dropdown="notificationsdropdown">
+					<img src="{{ url_for('static', filename='image/icons/icons-24-gray/notifications.png') }}" alt="" title=""/>
+					<span class="content-header__icon-bubble">6</span>
+				</div>  
+				<nav class="dropdown-menu dropdown-menu--header dropdown-menu--notifications-menu" id="notificationsdropdown"> 			
+				<!-- <h3 class="dropdown-menu__subtitle">You have <strong>6</strong> notifications</h3> -->
+				<ul>    
+					<li class="d-flex justify-sb"><span class="important">IMPORTANT</span>Michael D. kidney surgery <b class="task-time">today</b></li>
+					<li class="d-flex justify-sb"><span class="important">IMPORTANT</span>FLU Alert report generated <b class="task-time">today</b></li>
+					
+					<li class="d-flex justify-sb"><span>Meeting with <strong>Dr. Joshua</strong> </span> <b class="task-time">tomorrow</b></li>
+					<li class="d-flex justify-sb"><span>Remember to create prescriptions for <strong>Alexander P.</strong></span> <b class="task-time">tomorrow</b></li>
+					<li class="d-flex justify-sb"><span><strong>Jada Sacks</strong> canceled the appointment at Cardiology, Dr. Michael V. </span> <b class="task-time">24 jan, 19</b></li>
+					<li class="d-flex justify-sb"><span>Sarah D. registered as new patient of <strong>Dr. George</strong> at Dermatology </span> <b class="task-time">28 jan, 19</b></li>
+					<li class="view-all"><a href="#" class="button button--general button--blue-border">View all</a></li>
+				</ul>
+				</nav>
+			</div>
+			
+			<div class="content-header__quicklinks content-header__dropdown">  
+			        <div class="content-header__quicklinks-icon content-header__icon content-header__dropdown-activate" data-dropdown="quicklinksdropdown">
+						<img src="{{ url_for('static', filename='image/icons/icons-24-gray/submenu.png') }}" alt="" title=""/>
+
+				</div>  
+				<nav class="dropdown-menu dropdown-menu--header dropdown-menu--quicklinks-menu" id="quicklinksdropdown"> 	
+				<h3 class="dropdown-menu__subtitle">Quick links</h3>				
+				<ul>
+				        <li><a href="#">Add new doctor</a></li>
+					<li><a href="#">Add new patient</a></li>
+					<li><a href="#">Generate reports</a></li>
+				</ul>
+				</nav>
+			</div>
+			
+			<div class="mobile-submenu"></div>
+
+			<nav class="content-header__menu">       
+				<ul>
+					<li class="appointment selected modal-toggle" data-openpopup="appointment"><a href="#">Make an appointment</a></li>
+					<li class="prescription modal-toggle" data-openpopup="prescription"><a href="#">Write a prescription</a></li>
+					<li class="reports modal-toggle" data-openpopup="reports"><a href="#">Generate report</a></li>
+				</ul>
+			</nav>
+			
+		</header>
+
+		
+		<!-- <div class="grid grid--margin">
+
+			<div class="grid__row dashboard-intro">
+				<div class="grid__col grid__col--margin grid__col--padding bg-white">
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin grid__col--12">
+							<div class="dashboard-intro__title"><span>Greetings!</span></div>
+							
+						</div>
+						 <div class="grid__col grid__col--12 d-flex justify-fe aligns-fs">
+							<span class="show-more show-more--select show-more--select-gray has-dropdown" data-dropdown="moreoptions">Edit your options</span>
+						</div>
+						<nav class="dropdown-menu dropdown-menu--content" id="moreoptions"> 			
+							<ul>
+								<li><a href="#">More Details</a></li>
+								<li><a href="#">View Report</a></li>
+								<li><a href="#">Edit Settings</a></li>
+								<li><a href="#">+ Add widget</a></li>
+							</ul>
+						</nav> -->
+
+					<!-- </div>
+				</div>
+			</div>
+		</div>  -->
+		<div class="grid__row dashboard-intro">
+			<div class="grid__col grid__col--margin grid__col--padding bg-white">
+				<div class="grid__row">
+					<div class="grid__col grid__col--margin grid__col--12">
+						<div class="dashboard-intro__title"><span>Greetings !</span></div>
+						<div class="dashboard-intro__title"><span>Welcome to Your Health Dashboard</span></div>
+						<div class="dashboard-intro__subtitle">Stay on top of your health with important tasks, updates, and alerts. You can also personalize your experience by adjusting your preferences.</div>
+						<div class="dashboard-intro__subtitle">
+							<button class="styled-button"><a href="{{ url_for('chatbot_ui') }}">Have a question? Consult with our medical chatbot before scheduling your appointment.</a></button>
+						</div>
+					</div>
+					<!-- <div class="grid__col grid__col--12 d-flex justify-fe aligns-fs">
+						<span class="show-more show-more--select show-more--select-gray has-dropdown" data-dropdown="moreoptions">Customize your preferences</span>
+					</div> -->
+					<nav class="dropdown-menu dropdown-menu--content" id="moreoptions">
+						<ul>
+							<li><a href="#">View Detailed Insights</a></li>
+							<li><a href="#">Access Your Health Report</a></li>
+							<li><a href="#">Modify Your Settings</a></li>
+							<li><a href="#">+ Add Health Widget</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		
+	</div>
+</div> 
+ <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/chartjs-plugin-style.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/charts-custom-dashboard.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/swiper.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/select2.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/jquery.scrollbar.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/daterangepicker.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/ion.rangeSlider.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/jquery.dashboard-custom.js') }}"></script>
+ 
+</body>
+
+<!-- Mirrored from smarttemplates.net/medikit/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 00:52:24 GMT -->
+</html>
