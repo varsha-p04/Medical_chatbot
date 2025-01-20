@@ -34,3 +34,44 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+$(document).ready(function() {
+    $('.custom-select').select2();
+});
+
+// Toggle Modal
+// const modal = document.getElementById('appointmentModal');
+// const openModalBtn = document.getElementById('openModalBtn');
+// const closeModalBtn = document.getElementById('closeModalBtn');
+// const form = document.getElementById('button');
+
+// // Open modal
+// openModalBtn.addEventListener('click', () => {
+//     modal.classList.add('modal--visible');
+// });
+
+// Close modal
+// closeModalBtn.addEventListener('click', () => {
+//     modal.classList.remove('modal--visible');
+// });
+
+
+function msg() {
+    Swal.fire({
+        title: 'Appointment Added!',
+        text: 'Your appointment has been successfully added.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        customClass: {
+            popup: 'swal2-modal-above' // Add a class if needed
+        }
+    }).then(() => {
+        // Close the modal
+        $('.modal').removeClass('modal--visible'); // Ensure this targets your modal correctly
+    });
+}
+
+
+// Handle form submission
+
+
+    

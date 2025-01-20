@@ -1,6 +1,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +18,64 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/ion.rangeSlider.min.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.min.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet"> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Form</title>
+ <style>
+	/* Modal Styles */
+	/* .modal {
+		display: none;
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0, 0, 0, 0.5);
+}
+	
+	.modal__wrapper {
+		background-color: white;
+		margin: 10% auto;
+		padding: 20px;
+		border-radius: 8px;
+		width: 50%;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	}
+	.modal__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.modal__close {
+		cursor: pointer;
+		color: red;
+		font-size: 20px;
+	}
+	.button--blue-bg {
+		padding: 10px 20px;
+		background-color: #007BFF;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	.button--blue-bg:hover {
+		background-color: #0056b3;
+	} */
+	.modal--visible {
+		display: block;
+	}
+	.modal--visible {
+    z-index: 1000; 
+}
+
+.swal2-modal-above {
+    z-index: 2000 !important; 
+}
+
+</style>
 </head>
 <body>
 
@@ -106,11 +165,11 @@
 			<div class="mobile-submenu"></div>
 
 			<nav class="content-header__menu">       
-				<ul>
+				<!-- <ul>
 					<li class="user selected"><a href="dashboard__doctors-add.html">Add new doctor</a></li>
 					<li class="prescription modal-toggle" data-openpopup="prescription"><a href="#">Write a prescription</a></li>
 					<li class="reports modal-toggle" data-openpopup="reports"><a href="#">Generate report</a></li>
-				</ul>
+				</ul> -->
 			</nav>
 			
 		</header>
@@ -126,7 +185,7 @@
 			</div>
 			
 			
-			<div class="content-subheader__options">
+			<!-- <div class="content-subheader__options">
 			
 					<div class="content-subheader__search">
 						<form>
@@ -148,7 +207,7 @@
 					</div>
 			
 			</div>
-			
+			 -->
 		</div>
 		
 
@@ -366,7 +425,7 @@
 	
 </div> <!-- Wrap end -->
 
-<div class="section section-panel" id="panel">
+<!-- <div class="section section-panel" id="panel">
 	<div class="panel-resize"></div>
 	<div class="section-panel__content scrollbar-macosx">
 		
@@ -494,10 +553,10 @@
 			</div>
 		</div> <!-- End of Grid -->	
 	</div>
-</div>  <!-- End of right panel -->
+</div>   
 
   <!-- Modal - Appointment --> 
-  <div class="modal modal--appointment modal--visible">
+  <div class="modal modal--appointment">
 		
 	<div class="modal__overlay modal__overlay--toggle"></div>
 	<div class="modal__wrapper modal-transition">
@@ -518,8 +577,8 @@
 				<div class="grid__row grid__row--margin">
 					<div class="grid__col grid__col--13 grid__col--margin">
 						<label class="form__label">PATIENT NAME</label>
-						<select class="custom-select select2-hidden-accessible" name="appname" data-select2-id="1" tabindex="-1" aria-hidden="true">
-							<option value="Patient Name" data-select2-id="3">Emma Williams</option>
+						<select class="custom-select" name="appname">
+							<option value="Patient Name">Emma Williams</option>
 							<option value="Patient Name">Olivia Johnson</option>
 							<option value="Patient Name">Ava Jones</option>
 							<option value="Patient Name">Isabella Brown</option>
@@ -559,15 +618,15 @@
 							<option value="Patient Name">Jackson Wright</option>
 							<option value="Patient Name">Anthony King</option>
 							<option value="Patient Name">Dylan Cooper</option>
-						</select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 323.2px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-appname-u0-container"><span class="select2-selection__rendered" id="select2-appname-u0-container" role="textbox" aria-readonly="true" title="Emma Williams">Emma Williams</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+						</select>
 					</div>
 					<div class="grid__col grid__col--13 grid__col--margin">
 								<label class="form__label">DATE OR BIRTH</label>
-								<input type="text" name="birthday" class="form__input" value="02/03/1983">
+								<input type="text" name="birthday" class="form__input" value="02/03/1983" />
 					</div>
 					<div class="grid__col grid__col--13 grid__col--margin">
 								<label class="form__label">PHONE</label>
-								<input type="text" name="appphone" class="form__input" value="">
+								<input type="text" name="appphone" class="form__input" value="" />
 					</div>
 				</div>
 				<div class="grid__row  grid__row--margin">
@@ -578,16 +637,16 @@
 				<div class="grid__row grid__row--margin">
 					<div class="grid__col grid__col--12 grid__col--margin">
 						<label class="form__label">LOCATION</label>
-						<select class="custom-select select2-hidden-accessible" name="applocation" data-select2-id="4" tabindex="-1" aria-hidden="true">
-							<option value="Los Angeles" data-select2-id="6">H Clinic, Houston Street</option>
+						<select class="custom-select" name="applocation">
+							<option value="Los Angeles">H Clinic, Houston Street</option>
 							<option value="Washington">Hostpital Washington</option>
 							<option value="New York">Clinic 54 New York</option>
 							<option value="Chicago">43V Room Chicago</option>
-						</select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="5" style="width: 497.3px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-applocation-fq-container"><span class="select2-selection__rendered" id="select2-applocation-fq-container" role="textbox" aria-readonly="true" title="H Clinic, Houston Street">H Clinic, Houston Street</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+						</select>
 					</div>
 					<div class="grid__col grid__col--12 grid__col--margin">
 								<label class="form__label">DATE &amp; TIME</label>
-								<input type="text" name="timepicker" class="form__input" value="">
+								<input type="text" name="timepicker" class="form__input" value="" />
 					</div>
 				</div>
 				<div class="grid__row grid__row--margin">
@@ -598,8 +657,8 @@
 				<div class="grid__row grid__row--margin">
 					<div class="grid__col grid__col--13 grid__col--margin">
 						<label class="form__label">EXAMINATION TYPE</label>
-						<select class="custom-select select2-hidden-accessible" name="apptype" data-select2-id="7" tabindex="-1" aria-hidden="true">
-							<option value="Examination" data-select2-id="9">Abdominal radiology</option>
+						<select class="custom-select" name="apptype">
+							<option value="Examination">Abdominal radiology</option>
 							<option value="Examination">Breast imaging</option>
 							<option value="Examination">Cardiothoracic radiology</option>
 							<option value="Examination">Cardiovascular radiology</option>
@@ -616,12 +675,12 @@
 							<option value="Examination">Pediatric radiology</option>
 							<option value="Examination">Radiation oncology</option>
 							<option value="Examination">Vascular and interventional radiology</option>
-						</select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="8" style="width: 323.2px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-apptype-z0-container"><span class="select2-selection__rendered" id="select2-apptype-z0-container" role="textbox" aria-readonly="true" title="Abdominal radiology">Abdominal radiology</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+						</select>
 					</div>
 					<div class="grid__col grid__col--13 grid__col--margin">
 								<label class="form__label">DOCTOR</label>
-								<select class="custom-select select2-hidden-accessible" name="apptype" data-select2-id="10" tabindex="-1" aria-hidden="true">
-									<option value="Patient Name" data-select2-id="12">Dr. Alexander Davies</option>
+								<select class="custom-select" name="apptype">
+									<option value="Patient Name">Dr. Alexander Davies</option>
 									<option value="Patient Name">Dr. William Evans</option>
 									<option value="Patient Name">Dr. Daniel Smith</option>
 									<option value="Patient Name">Dr. Jayden Taylor</option>
@@ -632,16 +691,16 @@
 									<option value="Patient Name">Dr. David Thompson</option>
 									<option value="Patient Name">Dr. Gabriel Wood</option>
 									<option value="Patient Name">Dr. Julian Robinson</option>
-								</select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="11" style="width: 323.2px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-apptype-3i-container"><span class="select2-selection__rendered" id="select2-apptype-3i-container" role="textbox" aria-readonly="true" title="Dr. Alexander Davies">Dr. Alexander Davies</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+								</select>
 					</div>
 					<div class="grid__col grid__col--13 grid__col--margin">
 								<label class="form__label">NOTES</label>
-								<input name="notes" id="notes" class="form__input" type="text">
+								<input name="notes" id="notes" class="form__input" type="text" />
 					</div>
 				</div>
 				<div class="grid__row grid__row--margin">
 					<div class="grid__col grid__col--margin">
-						<input type="submit" name="submit" class="button button--submit button--blue-bg" id="submit" value="ADD APPOINTMENT">	
+						<input type="submit" name="submit" class="button button--submit button--blue-bg" id="submit" value="ADD APPOINTMENT" onclick="msg()" title="Check the details before submitting"/>	
 					</div>
 				</div>
 			</div> <!-- End of Grid -->
@@ -652,10 +711,60 @@
 	</div>
 
 	</div>
-</div>
+</div> 
  
-  <!-- Modal - prescription --> 
-<div class="modal modal--prescription">
+<!--newwwww-->
+<!-- <div class="modal modal--appointment" id="appointmentModal">
+    <div class="modal__overlay"></div>
+    <div class="modal__wrapper">
+        <div class="modal__body">
+            <div class="modal__header">
+                <h2 class="modal__header-title">Make an Appointment</h2>
+                <span class="modal__close" id="closeModalBtn">&times;</span>
+            </div>
+            <div class="modal__content">
+                <form id="appointmentForm">
+                    <h3>Patient Information</h3>
+                    <label for="appname">Patient Name:</label>
+                    <select id="appname" name="appname">
+                        <option value="Emma Williams">Emma Williams</option>
+                        <option value="Olivia Johnson">Olivia Johnson</option>
+                    </select><br><br>
+
+                    <label for="birthday">Date of Birth:</label>
+                    <input type="date" id="birthday" name="birthday"><br><br>
+
+                    <label for="appphone">Phone:</label>
+                    <input type="tel" id="appphone" name="appphone"><br><br>
+
+                    <h3>Appointment Information</h3>
+                    <label for="applocation">Location:</label>
+                    <select id="applocation" name="applocation">
+                        <option value="H Clinic, Houston Street">H Clinic, Houston Street</option>
+                        <option value="Hospital Washington">Hospital Washington</option>
+                    </select><br><br>
+
+                    <label for="timepicker">Date & Time:</label>
+                    <input type="datetime-local" id="timepicker" name="timepicker"><br><br>
+
+                    <h3>Examination Information</h3>
+                    <label for="apptype">Examination Type:</label>
+                    <select id="apptype" name="apptype">
+                        <option value="Abdominal radiology">Abdominal radiology</option>
+                        <option value="Breast imaging">Breast imaging</option>
+                    </select><br><br>
+
+                    <label for="notes">Notes:</label>
+                    <input type="text" id="notes" name="notes"><br><br>
+
+                    <input type="submit" class="button--blue-bg" value="Add Appointment">
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+  <!-- Modal - prescription  -->
+<!-- <div class="modal modal--prescription">
 		
 	<div class="modal__overlay modal__overlay--toggle"></div>
 	<div class="modal__wrapper modal-transition">
@@ -805,7 +914,7 @@
 	</div>
 
 	</div>
-</div>
+</div> 
  
  
    <!-- Modal - reports --> 
@@ -941,14 +1050,14 @@
 
 		</div>
  </div> 
-
+ 
  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
  <script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
  <script src="{{ url_for('static', filename='js/select2.min.js') }}"></script>
  <script src="{{ url_for('static', filename='js/daterangepicker.min.js') }}"></script>
  <script src="{{ url_for('static', filename='js/ion.rangeSlider.min.js') }}"></script>
  <script src="{{ url_for('static', filename='js/jquery.dashboard-custom.js') }}"></script>
- 
+ <script src="{{url_for('static',filename='js/delete.js')}}"></script>
 </body>
 
 <!-- Mirrored from smarttemplates.net/medikit/dashboard__doctors.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 00:52:40 GMT -->

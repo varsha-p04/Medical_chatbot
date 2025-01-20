@@ -114,9 +114,9 @@
 					<img src="{{ url_for('static', filename='image/icons/icons-24-gray/notifications.png') }}" alt="" title=""/>
 					<span class="content-header__icon-bubble">6</span>
 				</div>  
-				<nav class="dropdown-menu dropdown-menu--header dropdown-menu--notifications-menu" id="notificationsdropdown"> 			
-				<!-- <h3 class="dropdown-menu__subtitle">You have <strong>6</strong> notifications</h3> -->
-				<ul>    
+				<!-- <nav class="dropdown-menu dropdown-menu--header dropdown-menu--notifications-menu" id="notificationsdropdown"> 			
+				 <h3 class="dropdown-menu__subtitle">You have <strong>6</strong> notifications</h3> -->
+				<!-- <ul>    
 					<li class="d-flex justify-sb"><span class="important">IMPORTANT</span>Michael D. kidney surgery <b class="task-time">today</b></li>
 					<li class="d-flex justify-sb"><span class="important">IMPORTANT</span>FLU Alert report generated <b class="task-time">today</b></li>
 					
@@ -125,8 +125,8 @@
 					<li class="d-flex justify-sb"><span><strong>Jada Sacks</strong> canceled the appointment at Cardiology, Dr. Michael V. </span> <b class="task-time">24 jan, 19</b></li>
 					<li class="d-flex justify-sb"><span>Sarah D. registered as new patient of <strong>Dr. George</strong> at Dermatology </span> <b class="task-time">28 jan, 19</b></li>
 					<li class="view-all"><a href="#" class="button button--general button--blue-border">View all</a></li>
-				</ul>
-				</nav>
+				</ul> -->
+				</nav> 
 			</div>
 			
 			<div class="content-header__quicklinks content-header__dropdown">  
@@ -148,22 +148,21 @@
 
 			<nav class="content-header__menu">       
 				<ul>
-					<li class="appointment selected modal-toggle" data-openpopup="appointment"><a href="#">Make an appointment</a></li>
-					<li class="prescription modal-toggle" data-openpopup="prescription"><a href="#">Write a prescription</a></li>
-					<li class="reports modal-toggle" data-openpopup="reports"><a href="#">Generate report</a></li>
+					<!-- <li class="prescription modal-toggle" data-openpopup="prescription"><a href="#">Write a prescription</a></li>
+					<li class="reports modal-toggle" data-openpopup="reports"><a href="#">Generate report</a></li> -->
 				</ul>
 			</nav>
 			
 		</header>
 
 		
-		<!-- <div class="grid grid--margin">
+		<div class="grid grid--margin">
 
-			<div class="grid__row dashboard-intro">
+			<!-- <div class="grid__row dashboard-intro">
 				<div class="grid__col grid__col--margin grid__col--padding bg-white">
 					<div class="grid__row">
-						<div class="grid__col grid__col--margin grid__col--12">
-							<div class="dashboard-intro__title"><span>Greetings!</span></div>
+						<div class="grid__col grid__col--margin grid__col--12"> -->
+							<!-- <div class="dashboard-intro__title"><span>Greetings!</span></div>
 							
 						</div>
 						 <div class="grid__col grid__col--12 d-flex justify-fe aligns-fs">
@@ -176,7 +175,7 @@
 								<li><a href="#">Edit Settings</a></li>
 								<li><a href="#">+ Add widget</a></li>
 							</ul>
-						</nav> -->
+						</nav>  -->
 
 					<!-- </div>
 				</div>
@@ -188,9 +187,12 @@
 					<div class="grid__col grid__col--margin grid__col--12">
 						<div class="dashboard-intro__title"><span>Greetings !</span></div>
 						<div class="dashboard-intro__title"><span>Welcome to Your Health Dashboard</span></div>
-						<div class="dashboard-intro__subtitle">Stay on top of your health with important tasks, updates, and alerts. You can also personalize your experience by adjusting your preferences.</div>
 						<div class="dashboard-intro__subtitle">
-							<button class="styled-button"><a href="{{ url_for('chatbot_ui') }}">Have a question? Consult with our medical chatbot before scheduling your appointment.</a></button>
+							Easily schedule your appointment or consult with our virtual medical chatbot to get quick answers before booking. Your health matters, and we're here to help you make informed decisions.</div>
+							<div class="dashboard-intro__subtitle"><b>Need help?</b></div>
+
+						<div class="dashboard-intro__subtitle">
+							<button class="styled-button"><a href="{{ url_for('chatbot_ui') }}">Consult with our virtual chatbot to address your health queries before scheduling your appointment.</a></button>
 						</div>
 					</div>
 					<!-- <div class="grid__col grid__col--12 d-flex justify-fe aligns-fs">
