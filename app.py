@@ -21,8 +21,8 @@ app = Flask(__name__)
 
 # Load environment variables
 load_dotenv()
-os.environ["PINECONE_API_KEY"] = "pcsk_5AFXwV_4UXCHwTrbP2m5EXxEyFT5NWWaN8ZuohwmNmvSvyfq4NCVzoMyxNoAvvg3fKHbZ2"
-os.environ["GROQ_API_KEY"] = "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"
+os.environ["PINECONE_API_KEY"] = ""
+os.environ["GROQ_API_KEY"] = ""
 
 # Download Hugging Face embeddings
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
