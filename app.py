@@ -37,7 +37,6 @@ docsearch = Pinecone.from_existing_index(
 # Set up the retriever
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
-# Fix the Groq LLM integration
 from groq import Groq
 
 class LangChainGroq(LLM):
